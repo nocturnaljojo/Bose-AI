@@ -1,0 +1,29 @@
+{
+  "name": "bose-ai",
+  "version": "0.1.0",
+  "description": "Bose-AI: a council of AI models, convened in your terminal.",
+  "type": "module",
+  "private": false,
+  "bin": {
+    "bose": "./bin/bose.mjs"
+  },
+  "scripts": {
+    "start": "node ./bin/bose.mjs",
+    "check": "node --check ./bin/bose.mjs && node --check ./src/cli.mjs && node --check ./src/mcp/server.mjs && node --check ./src/lib/doctor.mjs",
+    "smoke": "node ./bin/bose.mjs --help && node ./bin/bose.mjs providers && node ./bin/bose.mjs doctor && node ./bin/bose.mjs mobile context --dry-run"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "ai",
+    "cli",
+    "mcp",
+    "claude-code",
+    "expo",
+    "react-native",
+    "orchestration"
+  ],
+  "author": "Jovilisi D",
+  "license": "MIT"
+}
