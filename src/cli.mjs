@@ -3,6 +3,7 @@ import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { buildMobileContextPack, defaultOutDir, renderContextPack } from "./lib/context-pack.mjs";
 import { buildDoctorReport, renderDoctorReport } from "./lib/doctor.mjs";
+import { buildSetupPlan, renderPreflight, renderSetupNotes } from "./lib/mobile-setup.mjs";
 import { callProvider, listProviders } from "./providers/index.mjs";
 import { startMcpServer } from "./mcp/server.mjs";
 
@@ -74,7 +75,7 @@ Usage:
   bose council <question>
   bose mobile context [--out <dir>] [--dry-run]
   bose mobile plan [--out <dir>]
-  bose mobile init [--name <name>] [--dir <path>] [--run]
+  bose mobile init [--name <name>] [--dir <path>] [--template <template>] [--run] [--force] [--dry-run] [--out <dir>]
   bose mobile audit [--dir <path>] [--out <dir>]
   bose rork context [--out <dir>]
   bose rork prompt [--out <dir>]
@@ -158,7 +159,7 @@ async function mobileCommand(args, io) {
     io.stdout.write(`Usage:
   bose mobile context [--out <dir>] [--dry-run]
   bose mobile plan [--out <dir>]
-  bose mobile init [--name <name>] [--dir <path>] [--run]
+  bose mobile init [--name <name>] [--dir <path>] [--template <template>] [--run] [--force] [--dry-run] [--out <dir>]
   bose mobile audit [--dir <path>] [--out <dir>]
 `);
     return;
@@ -207,17 +208,40 @@ async function mobileCommand(args, io) {
 
   if (subcommand === "init") {
     const options = parseOptions(args.slice(1));
-    const name = options.name || "mobile";
-    const dir = options.dir || "apps/mobile";
-    const command = `npx create-expo-app@latest ${quoteShell(dir)} --template default`;
+    const plan = buildSetupPlan({
+      cwd: process.cwd(),
+      name: options.name,
+      dir: options.dir,
+      template: options.template,
+      force: Boolean(options.force)
+    });
 
-    io.stdout.write(`Expo mobile app target: ${name}\n`);
-    io.stdout.write(`Recommended command:\n  ${command}\n`);
-    io.stdout.write("After creation, run `bose mobile context` from the repo root and wire shared auth/API/design tokens before UI polish.\n");
+    io.stdout.write(renderPreflight(plan));
+
+    if (options["dry-run"]) {
+      io.stdout.write(renderSetupNotes(plan));
+      return;
+    }
+
+    const outDir = path.resolve(process.cwd(), options.out || defaultOutDir("mobile-setup"));
+    await mkdir(outDir, { recursive: true });
+    const notesPath = path.join(outDir, "SETUP_NOTES.md");
+    await writeFile(notesPath, renderSetupNotes(plan));
+    io.stdout.write(`Wrote setup notes to ${notesPath}\n`);
+
+    if (plan.blockers.length > 0) {
+      io.stdout.write("Resolve the blockers above before re-running with --run.\n");
+      process.exitCode = 1;
+      return;
+    }
 
     if (options.run) {
       const { runCommand } = await import("./lib/process.mjs");
-      await runCommand("npx", ["create-expo-app@latest", dir, "--template", "default"], { cwd: process.cwd(), inherit: true });
+      io.stdout.write(`Running: ${plan.command}\n`);
+      await runCommand("npx", plan.commandArgs, { cwd: process.cwd(), inherit: true });
+      io.stdout.write(`\nScaffolding finished. Read ${notesPath} for the next steps.\n`);
+    } else {
+      io.stdout.write("Re-run with --run to execute the command, or copy it from above.\n");
     }
     return;
   }

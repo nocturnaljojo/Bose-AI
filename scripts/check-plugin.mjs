@@ -5,6 +5,7 @@ const requiredPaths = [
   "commands/doctor.md",
   "commands/mobile-context.md",
   "commands/mobile-plan.md",
+  "commands/mobile-init.md",
   "commands/rork-prompt.md",
   "commands/council.md",
   "commands/orchestrate.md",

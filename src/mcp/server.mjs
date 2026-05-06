@@ -1,4 +1,5 @@
 import { buildMobileContextPack, renderContextPack } from "../lib/context-pack.mjs";
+import { buildSetupPlan, renderPreflight, renderSetupNotes } from "../lib/mobile-setup.mjs";
 import { callProvider } from "../providers/index.mjs";
 
 const SERVER_INFO = {
@@ -29,6 +30,20 @@ const tools = [
       type: "object",
       properties: {
         cwd: { type: "string", description: "Repository root. Defaults to the current process cwd." }
+      }
+    }
+  },
+  {
+    name: "bose_mobile_init",
+    description: "Plan a guided Expo/React Native setup for the current repo. Returns the preflight summary, scaffolding command, and setup notes as text. Does not execute create-expo-app.",
+    inputSchema: {
+      type: "object",
+      properties: {
+        cwd: { type: "string", description: "Repository root. Defaults to the current process cwd." },
+        name: { type: "string", description: "Logical app name. Defaults to 'mobile'." },
+        dir: { type: "string", description: "Target directory relative to cwd. Defaults to 'apps/mobile'." },
+        template: { type: "string", description: "Expo template. One of default, tabs, blank, navigation. Defaults to 'default'." },
+        force: { type: "boolean", description: "Allow scaffolding into a non-empty directory." }
       }
     }
   }
@@ -111,6 +126,17 @@ async function callTool(name, args) {
   if (name === "bose_rork_handoff") {
     const pack = await buildMobileContextPack(args.cwd || process.cwd(), { target: "rork" });
     return textResult(renderRorkHandoff(pack));
+  }
+
+  if (name === "bose_mobile_init") {
+    const plan = buildSetupPlan({
+      cwd: args.cwd || process.cwd(),
+      name: args.name,
+      dir: args.dir,
+      template: args.template,
+      force: Boolean(args.force)
+    });
+    return textResult(`${renderPreflight(plan)}\n${renderSetupNotes(plan)}`);
   }
 
   const providerMap = {
