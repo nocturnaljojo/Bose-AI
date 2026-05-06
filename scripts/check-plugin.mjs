@@ -7,6 +7,7 @@ const requiredPaths = [
   "commands/mobile-plan.md",
   "commands/rork-prompt.md",
   "commands/council.md",
+  "commands/orchestrate.md",
   "skills/bose-ai/SKILL.md",
   "bin/bose.mjs",
   "src/providers/deepseek.mjs"

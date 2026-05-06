@@ -23,6 +23,20 @@ Provider adapters
 
 The CLI is the user-facing control surface. The MCP server is the autonomous tool surface that Claude Code can call mid-task.
 
+## Council Mode
+
+Council Mode is the orchestrator-agent pattern:
+
+```text
+User
+  -> Claude Code orchestrator
+    -> Codex implementation consult
+    -> DeepSeek critique consult
+  -> Claude Code executes, checks, and reports
+```
+
+The other providers remain available, but Codex plus DeepSeek is the default implementation council.
+
 ## Why One MCP Server
 
 Use one `bose-ai` MCP server with multiple tools instead of one server per model. This keeps auth, logging, rate limits, and tool descriptions in one place.

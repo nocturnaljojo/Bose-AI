@@ -82,6 +82,7 @@ Inside Claude Code, use:
 
 ```text
 /bose-ai:doctor
+/bose-ai:orchestrate
 /bose-ai:mobile-context
 /bose-ai:rork-prompt
 /bose-ai:council
@@ -93,6 +94,16 @@ The plugin package lives in:
 - `.claude-plugin/plugin.json`
 - `commands/`
 - `skills/bose-ai/SKILL.md`
+
+## Council Mode
+
+Use Council Mode when you want one Claude Code terminal to coordinate the work:
+
+```text
+/bose-ai:orchestrate Add a Supabase-backed mobile companion app plan for this web app.
+```
+
+Claude Code remains the orchestrator. It plans, consults Codex for implementation strategy, consults DeepSeek for critique and risk review, then makes the final code changes itself.
 
 ## Mobile Workflow
 

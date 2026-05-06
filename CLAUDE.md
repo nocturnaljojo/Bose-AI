@@ -46,6 +46,7 @@ echo '{"jsonrpc":"2.0","id":1,"method":"tools/list"}' | node ./bin/bose.mjs mcp
 Bose-AI should feel like a Claude Code plugin, not a VS Code fork. VS Code remains the editor. Claude Code runs in the terminal. Bose-AI provides:
 
 - Plugin commands such as `/bose-ai:mobile-context`
+- Council Mode command: `/bose-ai:orchestrate`
 - MCP tools such as `bose_mobile_context`
 - The standalone `bose` CLI
 
@@ -78,3 +79,16 @@ before implementing mobile code.
 - Rork: optional hosted mobile prototype/import workflow.
 
 Provider warnings in `bose doctor` are acceptable unless the user is trying to use that provider.
+
+## Council Mode Rule
+
+`/bose-ai:orchestrate` is the intended one-terminal workflow. Claude Code should:
+
+1. Plan the work.
+2. Consult Codex for implementation/refactor strategy.
+3. Consult DeepSeek for critique and risk review.
+4. Synthesize the council.
+5. Edit files itself.
+6. Run checks.
+
+Do not frame this as separate terminal sessions.

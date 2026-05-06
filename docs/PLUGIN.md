@@ -6,6 +6,7 @@ Bose-AI is packaged as a Claude Code plugin as well as a standalone CLI.
 
 - Plugin commands:
   - `/bose-ai:doctor`
+  - `/bose-ai:orchestrate`
   - `/bose-ai:mobile-context`
   - `/bose-ai:mobile-plan`
   - `/bose-ai:rork-prompt`
@@ -37,6 +38,7 @@ Inside Claude Code:
 /help
 /mcp
 /bose-ai:doctor
+/bose-ai:orchestrate Explain how this project should build mobile apps.
 /bose-ai:mobile-context
 ```
 
@@ -83,3 +85,13 @@ claude
 ```
 
 with Bose-AI available inside Claude Code.
+
+## Council Mode
+
+`/bose-ai:orchestrate` is the one-terminal agent workflow. It is designed for this interaction:
+
+```text
+User -> Claude Code -> Codex consult + DeepSeek critique -> Claude Code executes
+```
+
+Claude Code remains responsible for file edits and checks. Provider tools provide strategy, critique, and alternatives.
