@@ -1,0 +1,34 @@
+{
+  "name": "bose-ai",
+  "version": "0.1.0",
+  "description": "A Claude Code plugin and CLI for coordinating AI model councils, mobile context packs, and optional Rork handoffs.",
+  "author": {
+    "name": "Jovilisi D",
+    "email": "jovilisi@protonmail.com",
+    "url": "https://github.com/nocturnaljojo"
+  },
+  "homepage": "https://github.com/nocturnaljojo/Bose-AI",
+  "repository": "https://github.com/nocturnaljojo/Bose-AI",
+  "license": "MIT",
+  "keywords": [
+    "claude-code",
+    "mcp",
+    "ai",
+    "cli",
+    "mobile",
+    "expo",
+    "rork"
+  ],
+  "skills": "./skills",
+  "commands": "./commands",
+  "mcpServers": {
+    "bose-ai": {
+      "command": "node",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/bin/bose.mjs",
+        "mcp"
+      ],
+      "env": {}
+    }
+  }
+}

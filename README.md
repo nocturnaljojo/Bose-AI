@@ -11,6 +11,11 @@ Bose-AI coordinates a small council of AI systems from your terminal and Claude 
 - Grok can be wired as an optional xAI consultation lane.
 - Rork is supported as an optional mobile scaffold handoff, not a core dependency.
 
+It can be used in two ways:
+
+- Standalone CLI: run `bose` from any project terminal.
+- Claude Code plugin: load Bose-AI so Claude Code gets slash commands, a skill, and MCP tools.
+
 ## Install Locally
 
 From this repo:
@@ -61,6 +66,30 @@ bose rork audit --dir rork-import
 bose mcp
 ```
 
+## Claude Code Plugin
+
+For local plugin development from this repo:
+
+```bash
+claude --plugin-dir .
+```
+
+Inside Claude Code, use:
+
+```text
+/bose-ai:doctor
+/bose-ai:mobile-context
+/bose-ai:rork-prompt
+/bose-ai:council
+/mcp
+```
+
+The plugin package lives in:
+
+- `.claude-plugin/plugin.json`
+- `commands/`
+- `skills/bose-ai/SKILL.md`
+
 ## Mobile Workflow
 
 Bose-AI owns the mobile build. The default path is direct Expo/React Native:
@@ -98,5 +127,6 @@ The server exposes tools for provider consultation and mobile/Rork context gener
 ## Project Docs
 
 - `docs/ARCHITECTURE.md`
+- `docs/PLUGIN.md`
 - `docs/ROUTING.md`
 - `docs/MOBILE.md`

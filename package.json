@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "node ./bin/bose.mjs",
-    "check": "node --check ./bin/bose.mjs && node --check ./src/cli.mjs && node --check ./src/mcp/server.mjs && node --check ./src/lib/doctor.mjs",
+    "check": "node --check ./bin/bose.mjs && node --check ./src/cli.mjs && node --check ./src/mcp/server.mjs && node --check ./src/lib/doctor.mjs && node --check ./scripts/check-plugin.mjs && node ./scripts/check-plugin.mjs",
     "smoke": "node ./bin/bose.mjs --help && node ./bin/bose.mjs providers && node ./bin/bose.mjs doctor && node ./bin/bose.mjs mobile context --dry-run"
   },
   "engines": {
