@@ -24,6 +24,7 @@ VS Code terminal
 - Use `bose mobile plan` before creating or editing Expo/React Native code.
 - Use `bose rork prompt` only when the user wants Rork as an optional visual scaffold.
 - Use `bose council "<question>"` only when a manual multi-provider comparison is worth the delay.
+- Use `/bose-ai:consensus` when the user wants concise review with `SEND IT`, `REVISE`, or `BLOCK`.
 - Use `/bose-ai:orchestrate` for the one-terminal agent workflow where Claude Code plans, consults Codex and DeepSeek, then executes.
 - Do not ask the user to run `bose mcp` manually during normal Claude Code use. Claude Code starts the MCP server when the plugin is connected.
 

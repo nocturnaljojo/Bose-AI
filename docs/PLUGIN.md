@@ -6,6 +6,7 @@ Bose-AI is packaged as a Claude Code plugin as well as a standalone CLI.
 
 - Plugin commands:
   - `/bose-ai:doctor`
+  - `/bose-ai:consensus`
   - `/bose-ai:orchestrate`
   - `/bose-ai:mobile-context`
   - `/bose-ai:mobile-plan`
@@ -38,6 +39,7 @@ Inside Claude Code:
 /help
 /mcp
 /bose-ai:doctor
+/bose-ai:consensus Review this implementation plan.
 /bose-ai:orchestrate Explain how this project should build mobile apps.
 /bose-ai:mobile-context
 ```
@@ -95,3 +97,13 @@ User -> Claude Code -> Codex consult + DeepSeek critique -> Claude Code executes
 ```
 
 Claude Code remains responsible for file edits and checks. Provider tools provide strategy, critique, and alternatives.
+
+## Consensus Gate
+
+`/bose-ai:consensus` is the short review loop:
+
+```text
+Claude proposal -> Gemini/Codex/DeepSeek review -> SEND IT / REVISE / BLOCK
+```
+
+If all available reviewers agree, Claude Code should answer only `SEND IT`. If they disagree, it should state the missing points, revise once, run a final review pass, then return the shortest final verdict.

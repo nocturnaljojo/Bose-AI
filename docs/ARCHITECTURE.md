@@ -37,6 +37,18 @@ User
 
 The other providers remain available, but Codex plus DeepSeek is the default implementation council.
 
+## Consensus Gate
+
+The consensus gate keeps model consultation terse:
+
+```text
+Proposal
+  -> Gemini/Codex/DeepSeek verdicts
+  -> SEND IT, MAJORITY SEND IT, REVISE, or BLOCK
+```
+
+Long transcripts are intentionally hidden. If reviewers disagree, Claude Code extracts only the missing points, revises the plan, and runs one final review pass.
+
 ## Why One MCP Server
 
 Use one `bose-ai` MCP server with multiple tools instead of one server per model. This keeps auth, logging, rate limits, and tool descriptions in one place.

@@ -28,3 +28,5 @@ MCP tool descriptions should make delegation rare and deliberate:
 `bose council` is manual. It asks configured providers the same question and prints their responses. Claude Code should synthesize the answer after reading the outputs.
 
 `/bose-ai:orchestrate` is the agent workflow. Claude Code plans, asks Codex for implementation strategy, asks DeepSeek for critique and risk review, synthesizes the council, then executes the change in the current repo.
+
+`/bose-ai:consensus` is the approval gate. Use it when the user wants a plan or response reviewed without long transcripts. The output should be one of `SEND IT`, `MAJORITY SEND IT`, `REVISE`, or `BLOCK`.

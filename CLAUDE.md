@@ -46,6 +46,7 @@ echo '{"jsonrpc":"2.0","id":1,"method":"tools/list"}' | node ./bin/bose.mjs mcp
 Bose-AI should feel like a Claude Code plugin, not a VS Code fork. VS Code remains the editor. Claude Code runs in the terminal. Bose-AI provides:
 
 - Plugin commands such as `/bose-ai:mobile-context`
+- Consensus gate command: `/bose-ai:consensus`
 - Council Mode command: `/bose-ai:orchestrate`
 - MCP tools such as `bose_mobile_context`
 - The standalone `bose` CLI
@@ -92,3 +93,14 @@ Provider warnings in `bose doctor` are acceptable unless the user is trying to u
 6. Run checks.
 
 Do not frame this as separate terminal sessions.
+
+## Consensus Gate Rule
+
+When using `/bose-ai:consensus`, keep output terse:
+
+- If reviewers agree, say `SEND IT`.
+- If reviewers mostly agree, say `MAJORITY SEND IT: <brief note>`.
+- If something is missing, say `REVISE: <brief missing points>`.
+- If unsafe, say `BLOCK: <brief reason>`.
+
+Do not show long model transcripts unless the user explicitly asks.
