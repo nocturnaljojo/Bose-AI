@@ -12,10 +12,14 @@ export function commandExists(command) {
 
 export function runCommand(command, args = [], options = {}) {
   return new Promise((resolve, reject) => {
-    const child = spawn(command, args, {
+    const useShell = process.platform === "win32";
+    const spawnCommand = useShell ? buildWindowsCommandLine(command, args) : command;
+    const spawnArgs = useShell ? [] : args;
+
+    const child = spawn(spawnCommand, spawnArgs, {
       cwd: options.cwd || process.cwd(),
       env: { ...process.env, ...(options.env || {}) },
-      shell: process.platform === "win32",
+      shell: useShell,
       stdio: options.inherit ? "inherit" : ["pipe", "pipe", "pipe"]
     });
 
@@ -52,4 +56,37 @@ export function runCommand(command, args = [], options = {}) {
       }
     });
   });
+}
+
+function buildWindowsCommandLine(command, args) {
+  return [command, ...args].map(quoteForCmd).join(" ");
+}
+
+function quoteForCmd(arg) {
+  const value = String(arg);
+  if (value.length > 0 && !/[ \t\r\n\v"]/.test(value)) {
+    return value;
+  }
+
+  let result = "\"";
+  let backslashes = 0;
+  for (let i = 0; i < value.length; i += 1) {
+    const ch = value[i];
+    if (ch === "\\") {
+      backslashes += 1;
+      continue;
+    }
+    if (ch === "\"") {
+      result += "\\".repeat(backslashes * 2 + 1);
+      result += "\"";
+      backslashes = 0;
+      continue;
+    }
+    result += "\\".repeat(backslashes);
+    backslashes = 0;
+    result += ch;
+  }
+  result += "\\".repeat(backslashes * 2);
+  result += "\"";
+  return result;
 }
