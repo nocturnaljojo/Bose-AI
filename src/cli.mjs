@@ -83,10 +83,11 @@ Usage:
   bose mcp
 
 Providers:
-  gemini   Uses Gemini CLI via BOSE_GEMINI_BIN or gemini
-  codex    Uses Codex CLI via BOSE_CODEX_BIN or codex
-  openai   Uses OPENAI_API_KEY and BOSE_OPENAI_MODEL
-  grok     Uses XAI_API_KEY and BOSE_GROK_MODEL
+  gemini    Uses Gemini CLI via BOSE_GEMINI_BIN or gemini
+  codex     Uses Codex CLI via BOSE_CODEX_BIN or codex
+  openai    Uses OPENAI_API_KEY and BOSE_OPENAI_MODEL
+  grok      Uses XAI_API_KEY and BOSE_GROK_MODEL
+  deepseek  Uses DEEPSEEK_API_KEY and BOSE_DEEPSEEK_MODEL
 
 Examples:
   bose doctor

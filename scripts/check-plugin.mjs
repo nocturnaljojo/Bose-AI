@@ -8,7 +8,8 @@ const requiredPaths = [
   "commands/rork-prompt.md",
   "commands/council.md",
   "skills/bose-ai/SKILL.md",
-  "bin/bose.mjs"
+  "bin/bose.mjs",
+  "src/providers/deepseek.mjs"
 ];
 
 for (const file of requiredPaths) {

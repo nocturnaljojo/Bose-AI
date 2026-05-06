@@ -74,6 +74,7 @@ before implementing mobile code.
 - Codex: focused codegen and refactor proposals.
 - OpenAI: reasoning, synthesis, UX copy, writing.
 - Grok: optional xAI lane.
+- DeepSeek: optional reasoning and code-focused consultation.
 - Rork: optional hosted mobile prototype/import workflow.
 
 Provider warnings in `bose doctor` are acceptable unless the user is trying to use that provider.

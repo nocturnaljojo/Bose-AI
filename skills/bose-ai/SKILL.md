@@ -14,7 +14,7 @@ The user opens a project folder, runs `claude`, and expects Claude Code plus Bos
 VS Code terminal
   -> claude
     -> Bose-AI plugin/MCP tools
-      -> Codex, Gemini, OpenAI, Grok, mobile context, Rork handoff
+      -> Codex, Gemini, OpenAI, Grok, DeepSeek, mobile context, Rork handoff
 ```
 
 ## Prefer These Surfaces
@@ -32,6 +32,7 @@ VS Code terminal
 - Codex: focused code generation and refactor proposals.
 - OpenAI: reasoning, synthesis, product writing, UX copy.
 - Grok: optional xAI lane when explicitly useful or requested.
+- DeepSeek: optional reasoning and code-focused consultation lane.
 - Rork: hosted mobile scaffold workflow through prompt and GitHub import, not a core dependency.
 
 ## Mobile Workflow

@@ -58,6 +58,11 @@ const ENV_CHECKS = [
     name: "XAI_API_KEY",
     label: "xAI API key",
     reason: "Enables `bose ask grok` and the Grok MCP consult tool."
+  },
+  {
+    name: "DEEPSEEK_API_KEY",
+    label: "DeepSeek API key",
+    reason: "Enables `bose ask deepseek` and the DeepSeek MCP consult tool."
   }
 ];
 

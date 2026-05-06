@@ -18,6 +18,7 @@ Provider adapters
   - Codex for focused code generation and refactor proposals
   - OpenAI for reasoning, synthesis, and writing
   - Grok for optional xAI consultation
+  - DeepSeek for optional reasoning and code-focused consultation
 ```
 
 The CLI is the user-facing control surface. The MCP server is the autonomous tool surface that Claude Code can call mid-task.
@@ -28,7 +29,7 @@ Use one `bose-ai` MCP server with multiple tools instead of one server per model
 
 ## Rork Position
 
-Rork is not a peer provider in the same way as Codex, Gemini, OpenAI, or Grok. Treat it as an optional mobile scaffold workflow:
+Rork is not a peer provider in the same way as Codex, Gemini, OpenAI, Grok, or DeepSeek. Treat it as an optional mobile scaffold workflow:
 
 ```text
 Existing web app

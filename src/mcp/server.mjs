@@ -11,6 +11,7 @@ const tools = [
   providerTool("bose_codex_consult", "codex", "Ask Codex for a focused code generation or refactor proposal. Returns text; it does not edit files by itself."),
   providerTool("bose_openai_consult", "openai", "Ask OpenAI for reasoning, writing, synthesis, or product/UX copy."),
   providerTool("bose_grok_consult", "grok", "Ask Grok for a second opinion where xAI/Grok is explicitly useful or requested."),
+  providerTool("bose_deepseek_consult", "deepseek", "Ask DeepSeek for reasoning- or code-focused consultation. Use when DeepSeek is explicitly preferred or for cost-efficient long-context reasoning."),
   {
     name: "bose_mobile_context",
     description: "Generate a mobile context pack from the current repo for direct Expo/React Native builds.",
@@ -116,7 +117,8 @@ async function callTool(name, args) {
     bose_gemini_consult: "gemini",
     bose_codex_consult: "codex",
     bose_openai_consult: "openai",
-    bose_grok_consult: "grok"
+    bose_grok_consult: "grok",
+    bose_deepseek_consult: "deepseek"
   };
 
   const provider = providerMap[name];

@@ -9,6 +9,7 @@ Bose-AI coordinates a small council of AI systems from your terminal and Claude 
 - Codex can help with focused code generation and refactor proposals.
 - OpenAI can help with reasoning, synthesis, and writing.
 - Grok can be wired as an optional xAI consultation lane.
+- DeepSeek can be wired as an optional reasoning and code-focused consultation lane.
 - Rork is supported as an optional mobile scaffold handoff, not a core dependency.
 
 It can be used in two ways:
@@ -38,11 +39,13 @@ Copy `.env.example` to `.env` in your shell environment or set these variables g
 ```bash
 OPENAI_API_KEY=...
 XAI_API_KEY=...
+DEEPSEEK_API_KEY=...
 BOSE_GEMINI_BIN=gemini
 BOSE_CODEX_BIN=codex
+BOSE_DEEPSEEK_MODEL=deepseek-v4-flash
 ```
 
-Gemini and Codex use local CLIs. OpenAI and Grok use API keys.
+Gemini and Codex use local CLIs. OpenAI, Grok, and DeepSeek use API keys.
 
 Check your local setup with:
 
@@ -56,6 +59,7 @@ bose doctor
 bose providers
 bose doctor
 bose ask gemini "Map this repo's auth flow."
+bose ask deepseek "Review this mobile architecture."
 bose council "Should this mobile app use Expo Router?"
 bose mobile context
 bose mobile plan

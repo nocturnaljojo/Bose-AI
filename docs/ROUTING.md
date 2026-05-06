@@ -8,6 +8,7 @@ Use conservative delegation. Bose-AI should not turn every task into a four-mode
 | Focused code generation or refactor proposal | Codex | Strong code-edit reasoning |
 | UX copy, README prose, synthesis, business writing | OpenAI | Writing and reasoning |
 | xAI/Grok-specific second opinion | Grok | Optional provider lane |
+| DeepSeek-specific reasoning or cost-efficient code review | DeepSeek | Optional reasoning/code lane |
 | Direct mobile implementation | Claude Code + Codex | Keep code changes local and reviewable |
 | Mobile visual prototype | Rork handoff | Fast Expo/React Native scaffold |
 
@@ -19,6 +20,7 @@ MCP tool descriptions should make delegation rare and deliberate:
 - Use Codex for focused implementation proposals, not uncontrolled repo rewrites.
 - Use OpenAI for writing, synthesis, and product reasoning.
 - Use Grok only when explicitly useful or requested.
+- Use DeepSeek when explicitly requested or when a reasoning/code-focused second opinion is useful.
 - Use Rork only when the user wants a hosted visual mobile scaffold.
 
 ## Council Mode

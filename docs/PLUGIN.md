@@ -19,6 +19,7 @@ Bose-AI is packaged as a Claude Code plugin as well as a standalone CLI.
   - `bose_codex_consult`
   - `bose_openai_consult`
   - `bose_grok_consult`
+  - `bose_deepseek_consult`
   - `bose_mobile_context`
   - `bose_rork_handoff`
 
