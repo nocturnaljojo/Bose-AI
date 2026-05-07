@@ -20,12 +20,14 @@ VS Code terminal
 ## Prefer These Surfaces
 
 - Use `bose doctor` to check local setup.
+- Use `/bose-ai:align` when the user asks where the project is up to, what should happen next, or whether the project is drifting.
 - Use `bose mobile context` before planning mobile work.
 - Use `bose mobile plan` before creating or editing Expo/React Native code.
 - Use `bose rork prompt` only when the user wants Rork as an optional visual scaffold.
 - Use `bose council "<question>"` only when a manual multi-provider comparison is worth the delay.
 - Use `/bose-ai:consensus` when the user wants concise review with `SEND IT`, `REVISE`, or `BLOCK`.
 - Use `/bose-ai:orchestrate` for the one-terminal agent workflow where Claude Code plans, consults Codex and DeepSeek, then executes.
+- Use `/bose-ai:ui-review` when the user wants UI improvement, visual QA, responsive checks, or model review of screenshots.
 - Do not ask the user to run `bose mcp` manually during normal Claude Code use. Claude Code starts the MCP server when the plugin is connected.
 
 ## Provider Routing
@@ -59,6 +61,16 @@ current app repo
   -> bose rork import
   -> bose rork audit
 ```
+
+## UI Review Workflow
+
+For UI work, gather browser evidence before consulting models:
+
+1. Identify the route/screen and app start command.
+2. Capture desktop and mobile screenshots.
+3. Check console errors, failed requests, overflow, and basic accessibility.
+4. Send a short UI packet to Gemini/Codex/DeepSeek.
+5. Require `SEND IT`, `REVISE`, or `BLOCK`.
 
 ## Development Checks
 

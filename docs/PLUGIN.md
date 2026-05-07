@@ -5,12 +5,14 @@ Bose-AI is packaged as a Claude Code plugin as well as a standalone CLI.
 ## What The Plugin Adds
 
 - Plugin commands:
+  - `/bose-ai:align`
   - `/bose-ai:doctor`
   - `/bose-ai:consensus`
   - `/bose-ai:orchestrate`
   - `/bose-ai:mobile-context`
   - `/bose-ai:mobile-plan`
   - `/bose-ai:rork-prompt`
+  - `/bose-ai:ui-review`
   - `/bose-ai:council`
 - Plugin skill:
   - `bose-ai`
@@ -38,10 +40,12 @@ Inside Claude Code:
 ```text
 /help
 /mcp
+/bose-ai:align
 /bose-ai:doctor
 /bose-ai:consensus Review this implementation plan.
 /bose-ai:orchestrate Explain how this project should build mobile apps.
 /bose-ai:mobile-context
+/bose-ai:ui-review Review the dashboard layout.
 ```
 
 When editing plugin files during a Claude Code session, run:
@@ -87,6 +91,26 @@ claude
 ```
 
 with Bose-AI available inside Claude Code.
+
+## Alignment Workflow
+
+`/bose-ai:align` is the senior-dev checkpoint:
+
+```text
+authority files -> current state -> drift check -> one recommended next task
+```
+
+Use it before starting new work, after long sessions, or when the user is worried the project is drifting.
+
+## UI Review Workflow
+
+`/bose-ai:ui-review` uses browser evidence before model opinion:
+
+```text
+Playwright/browser screenshots + console/network signals -> UI packet -> concise model verdicts
+```
+
+Gemini reviews visual/product feel, Codex reviews implementation simplicity, and DeepSeek reviews risks/accessibility/regressions.
 
 ## Council Mode
 

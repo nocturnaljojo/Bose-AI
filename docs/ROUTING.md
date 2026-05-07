@@ -11,6 +11,8 @@ Use conservative delegation. Bose-AI should not turn every task into a four-mode
 | DeepSeek-specific reasoning or cost-efficient code review | DeepSeek | Optional reasoning/code lane |
 | Direct mobile implementation | Claude Code + Codex | Keep code changes local and reviewable |
 | Mobile visual prototype | Rork handoff | Fast Expo/React Native scaffold |
+| Project drift or "what next?" | `/bose-ai:align` | Authority-file checkpoint before execution |
+| UI improvement or visual QA | `/bose-ai:ui-review` | Browser evidence plus concise model review |
 
 ## Tool Description Strategy
 
@@ -30,3 +32,11 @@ MCP tool descriptions should make delegation rare and deliberate:
 `/bose-ai:orchestrate` is the agent workflow. Claude Code plans, asks Codex for implementation strategy, asks DeepSeek for critique and risk review, synthesizes the council, then executes the change in the current repo.
 
 `/bose-ai:consensus` is the approval gate. Use it when the user wants a plan or response reviewed without long transcripts. The output should be one of `SEND IT`, `MAJORITY SEND IT`, `REVISE`, or `BLOCK`.
+
+## Alignment
+
+Use `/bose-ai:align` before implementation when direction matters. It should inspect authority files, current git state, scripts, recent commits, and open diffs, then recommend exactly one next task.
+
+## UI Review
+
+Use `/bose-ai:ui-review` for visual changes. It should gather browser evidence first, then ask models for terse verdicts. Do not trust model taste without screenshots, console/network status, and responsive checks.

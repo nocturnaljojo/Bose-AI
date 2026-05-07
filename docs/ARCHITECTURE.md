@@ -49,6 +49,33 @@ Proposal
 
 Long transcripts are intentionally hidden. If reviewers disagree, Claude Code extracts only the missing points, revises the plan, and runs one final review pass.
 
+## Alignment Workflow
+
+Alignment is the project checkpoint workflow:
+
+```text
+authority files + git state + current docs
+  -> drift check
+  -> recommended next task
+  -> consensus gate
+```
+
+This keeps Bose-AI from executing isolated tasks that no longer match the project direction.
+
+## UI Review Workflow
+
+UI review must start with evidence, not taste:
+
+```text
+running app
+  -> Playwright/browser screenshots
+  -> console/network/layout/a11y signals
+  -> Gemini/Codex/DeepSeek verdicts
+  -> revised UI plan
+```
+
+Gemini can be strong at visual direction, but Claude Code should still require objective browser evidence and a concise consensus gate before implementation.
+
 ## Why One MCP Server
 
 Use one `bose-ai` MCP server with multiple tools instead of one server per model. This keeps auth, logging, rate limits, and tool descriptions in one place.

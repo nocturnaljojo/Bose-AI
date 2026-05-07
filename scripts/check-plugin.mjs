@@ -2,6 +2,7 @@ import { existsSync, readFileSync } from "node:fs";
 
 const requiredPaths = [
   ".claude-plugin/plugin.json",
+  "commands/align.md",
   "commands/doctor.md",
   "commands/mobile-context.md",
   "commands/mobile-plan.md",
@@ -10,6 +11,7 @@ const requiredPaths = [
   "commands/council.md",
   "commands/consensus.md",
   "commands/orchestrate.md",
+  "commands/ui-review.md",
   "skills/bose-ai/SKILL.md",
   "bin/bose.mjs",
   "src/providers/deepseek.mjs"
